@@ -32,13 +32,14 @@ class YogigyoViewModel: ObservableObject {
                         DispatchQueue.main.async {
                             // 페이지 데이터를 전체 배열에 추가
                             allYogiList.append(contentsOf: list)
-                            // 페이지 번호가 3이 되었을때는 allYogiList에 담긴것을 yogiList로 담아준다
+                            // 페이지 번호가 3이 되었을때는 allYogiList에 담긴것 모두를 yogiList로 담아준다
                             if pageNum == 3 {
                                 self.yogiList = allYogiList
+                                print(self.yogiList.count)
                             }
                         }
                     } catch {
-                        print("error: ", error)
+//                        print("error: ", error)
                     }
                 }
             }.resume()

@@ -11,6 +11,7 @@ struct RestaurantListView: View {
     // property
     let restaurant: YogiyoModel
     @State var like: Bool = false
+    @AppStorage("pick") var pick: String = ""
     
     var body: some View {
         // 전체적으로 가로 베치를 위한 HStack
@@ -40,8 +41,21 @@ struct RestaurantListView: View {
                     // 색상 변화가 없는 것이라 Group으로 묶어서 한번에 설정
                     Group{
                         Image(systemName: "text.bubble.fill")
-                        Text(". 리뷰 \(restaurant.reviewCount)")
-                        Text(". 사장님댓글 \(restaurant.ownerReplyCount)")
+                        // 리뷰 갯수가 없을 경우
+                        if restaurant.reviewCount == 0 {
+                            Text("첫번째 리뷰를 남겨주세요!")
+                        } else {
+                            // 리뷰 갯수가 있을 경우
+                            Text(". 리뷰 \(restaurant.reviewCount)")
+                        }
+                        // 사장님의 댓글이 없는경우 공란으로 출력
+                        if restaurant.ownerReplyCount == 0 {
+                            Text("")
+                        } else {
+                            // 사장님의 댓글이 있는 경우 갯수 출력
+                            Text(". 사장님댓글 \(restaurant.ownerReplyCount)")
+                        }
+                        
                     } //:Group
                     .foregroundColor(Color.gray)
                 }//: HStack
@@ -53,14 +67,24 @@ struct RestaurantListView: View {
                 HStack{
                     // 동일 부분 그룹으로 지정하여 한번에 변경
                     Group{
-                        Text("전화주문")
-                            .frame(width: 50)
+                        // 전화주문이 가능 할 경우 표출
+                        if restaurant.isPhoneOrderAvailable {
+                            Text("전화주문")
+                                .frame(width: 50)
+                        }
+                        
+                        // 해당 두 부분은 배열을 통해서 가져오기 때문에 공부가 좀 필요할 듯
                         Text("요기서결제")
                             .frame(width: 50)
                         Text("현장결제")
                             .frame(width: 50)
-                        Text("테이크아웃")
-                            .frame(width: 50)
+                        
+                        // 테이크아웃이 가능할 경우 표출
+                        if restaurant.isAvailablePickup {
+                            Text("테이크아웃")
+                                .frame(width: 50)
+                        }
+                        
                     }
                     .font(.system(size: 10))
                     .foregroundColor(Color.gray)
@@ -76,22 +100,26 @@ struct RestaurantListView: View {
                 .padding(.bottom, 5)
                 .padding(.leading, 20)
                 
-                // 다음줄 표현을 위한 HStack 선언
-                HStack{
-                    Text("익스프레스")
-                        .font(.caption)
-                        .fontWeight(.bold)
-                    //                        .foregroundColor(.red)
-                        .padding(.leading, 30)
-                        .background(
-                            // 캡슐로 표현하여 둥근 사각형 생성
-                            Capsule()
-                                .stroke(Color.red, lineWidth: 2.5)
-                                .padding(.leading, 25)
-                                .padding(.trailing, -5)
-                        )
-                    Spacer()
-                }//: HStack
+                // 해당하는 배달 방법이 맞을 경우
+                if restaurant.deliveryMethod == "OD" || restaurant.deliveryMethod == "OD/VD" {
+                    // 다음줄 표현을 위한 HStack 선언
+                    HStack{
+                        Text("익스프레스")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                        //                        .foregroundColor(.red)
+                            .padding(.leading, 30)
+                            .background(
+                                // 캡슐로 표현하여 둥근 사각형 생성
+                                Capsule()
+                                    .stroke(Color.red, lineWidth: 2.5)
+                                    .padding(.leading, 25)
+                                    .padding(.trailing, -5)
+                            )
+                        Spacer()
+                    }//: HStack
+                }
+                
             }//: VStack
             .padding(.leading, -20)
             
@@ -99,7 +127,15 @@ struct RestaurantListView: View {
             
             // 찜 버튼을 위한 부분
             Button {
+                let name = restaurant.name
                 like.toggle()
+                if like {
+                    pick = name
+                } else {
+                    
+                }
+                
+                
             } label: {
                 Image(systemName: like ? "suit.heart.fill" : "suit.heart")
                     .padding(.trailing, 10)
