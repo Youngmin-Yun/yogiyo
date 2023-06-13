@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Yogiyo: Codable {
+struct YogiyoModel: Codable {
     let isAvailablePickup: Bool
     let logoUrl: String
     let name: String
@@ -18,6 +18,9 @@ struct Yogiyo: Codable {
     let sectionTitle: String
     let reviewAvg: Double
     let payment: [String]
+    
+    // priview 샘플
+    static let sampleYogiyo = YogiyoModel(isAvailablePickup: false, logoUrl: "https://raw.githubusercontent.com/beomcheol/ios-codding-test-resources/master/thumbnails/롯데리아_20200428_Franchise_crop_200x200.jpg", name: "롯데리아-남부터미널점", deliverymethod: "OD", isPhoneOrderAvailable: true, reviewCount: 707, ownerReplyCount: 0, sectionTitle: "우리동네 플러스", reviewAvg: 4.7, payment: ["yogiseo", "offline"])
     
 }
 
@@ -31,7 +34,5 @@ struct Yogiyo: Codable {
 //    "ownerReplyCount": 0,
 //    "sectionTitle": "우리동네 플러스",
 //    "reviewAvg": 4.7,
-//    "payment": [
-//        "yogiseo",
-//        "offline"]
+//    "payment": ["yogiseo", "offline"]
 //}
