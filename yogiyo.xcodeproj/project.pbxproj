@@ -14,6 +14,7 @@
 		62619D5C2A38C4EC00CF472D /* YogiyoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62619D5B2A38C4EC00CF472D /* YogiyoModel.swift */; };
 		62619D5E2A38C5C800CF472D /* YogiyoViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62619D5D2A38C5C800CF472D /* YogiyoViewViewModel.swift */; };
 		62619D622A38C63800CF472D /* PickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62619D612A38C63800CF472D /* PickView.swift */; };
+		62619D642A38C7E700CF472D /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62619D632A38C7E700CF472D /* TabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		62619D5B2A38C4EC00CF472D /* YogiyoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiyoModel.swift; sourceTree = "<group>"; };
 		62619D5D2A38C5C800CF472D /* YogiyoViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogiyoViewViewModel.swift; sourceTree = "<group>"; };
 		62619D612A38C63800CF472D /* PickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickView.swift; sourceTree = "<group>"; };
+		62619D632A38C7E700CF472D /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +63,6 @@
 				62619D592A38C4CC00CF472D /* Model */,
 				62619D582A38C4C600CF472D /* Viewmodel */,
 				62619D572A38C4B900CF472D /* View */,
-				62619D492A38C46300CF472D /* yogiyoApp.swift */,
 				62619D4D2A38C46400CF472D /* Assets.xcassets */,
 				62619D4F2A38C46400CF472D /* Preview Content */,
 			);
@@ -104,6 +105,8 @@
 		62619D5A2A38C4D200CF472D /* App */ = {
 			isa = PBXGroup;
 			children = (
+				62619D492A38C46300CF472D /* yogiyoApp.swift */,
+				62619D632A38C7E700CF472D /* TabBar.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				62619D4C2A38C46300CF472D /* HomeView.swift in Sources */,
 				62619D4A2A38C46300CF472D /* yogiyoApp.swift in Sources */,
 				62619D5C2A38C4EC00CF472D /* YogiyoModel.swift in Sources */,
+				62619D642A38C7E700CF472D /* TabBar.swift in Sources */,
 				62619D5E2A38C5C800CF472D /* YogiyoViewViewModel.swift in Sources */,
 				62619D622A38C63800CF472D /* PickView.swift in Sources */,
 			);

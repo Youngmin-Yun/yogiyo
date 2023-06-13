@@ -9,13 +9,16 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("메인화면")
-        }
-        .padding()
+        // 상단 타이틀을 위해 네비게이션뷰를 통해 설정
+        NavigationView() {
+            // ScrollView를 통해서 리스트 항목들이 화면을 벗어나더라도 스크롤을 해서 확인 할 수 있도록 설정
+            ScrollView(.vertical) {
+                Text("test")
+            } //: ScrollView
+            .navigationTitle("요기요") // 상단 타이틀
+            .navigationBarTitleDisplayMode(.inline) // navigationTitle의 형태 설정
+        } //: NavigationView
+        
     }
 }
 
