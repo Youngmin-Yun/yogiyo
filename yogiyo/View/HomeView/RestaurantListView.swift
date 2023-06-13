@@ -10,8 +10,6 @@ import SwiftUI
 struct RestaurantListView: View {
     // property
     let restaurant: YogiyoModel
-    
-    @StateObject var vm: YogigyoViewModel = YogigyoViewModel()
     @State var like: Bool = false
     
     var body: some View {
@@ -36,7 +34,7 @@ struct RestaurantListView: View {
                     Image(systemName: "star.fill")
                         .foregroundColor(.yellow)
                     // 기존 Double 타입의 리뷰 평점을 뷰모델에서 convert 함수를 통한 소수점 끊어서 표현
-                    Text("\(vm.convert(restaurant.reviewAvg))")
+                    Text("\(YogigyoViewModel().convert(restaurant.reviewAvg))")
                         .fontWeight(.bold)
                         .foregroundColor(.yellow)
                     // 색상 변화가 없는 것이라 Group으로 묶어서 한번에 설정
@@ -79,11 +77,11 @@ struct RestaurantListView: View {
                 .padding(.leading, 20)
                 
                 // 다음줄 표현을 위한 HStack 선언
-                HStack{ 
+                HStack{
                     Text("익스프레스")
                         .font(.caption)
                         .fontWeight(.bold)
-//                        .foregroundColor(.red)
+                    //                        .foregroundColor(.red)
                         .padding(.leading, 30)
                         .background(
                             // 캡슐로 표현하여 둥근 사각형 생성
@@ -96,7 +94,9 @@ struct RestaurantListView: View {
                 }//: HStack
             }//: VStack
             .padding(.leading, -20)
+            
             Spacer()
+            
             // 찜 버튼을 위한 부분
             Button {
                 like.toggle()
