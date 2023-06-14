@@ -11,6 +11,10 @@ struct HomeView: View {
     
     @ObservedObject var vm: YogigyoViewModel
     
+    
+    // HomeView로 가져온 식당 목록에 대한 것을 매개변수로 전달해야해서 State를 사용하여 배열 생성
+    @State private var pick: [YogiyoModel] = []
+    
     // viewModel을 초기화 하고 view가 호출될때마다 새롭게 업데이트를 위해 init 설정
     init() {
         vm = YogigyoViewModel()
@@ -24,7 +28,8 @@ struct HomeView: View {
             ScrollView(.vertical) {
                 VStack(spacing: 10) {
                     ForEach(vm.yogiList) { list in
-                        RestaurantListView(restaurant: list)
+                        // 좋아요가 눌렸을 때 해당 뷰로에도 동일한 입력값을 전달
+                        RestaurantListView(restaurant: list, pick: $pick)
                     }
                 }
                 .padding(.vertical)
